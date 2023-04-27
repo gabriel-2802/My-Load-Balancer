@@ -24,4 +24,4 @@
 		}                                                                      \
 	} while (0)
 
-#endif
+#endif  // UTILS_H_

@@ -62,7 +62,7 @@ void loader_add_server(load_balancer_t *main, int server_id)
 		int pos = search_pos(main->ring->hash, main->servers, hash_id);
 
 		resize_load_balancer(main);
-		add_server_ring(main->ring, &main->servers,server_id,
+		add_server_ring(main->ring, &main->servers, server_id,
 						hash_id, new_server, pos);
 
 		/* daca serverul nou adaugat este ultimul din hashring, succesorul
@@ -71,7 +71,6 @@ void loader_add_server(load_balancer_t *main, int server_id)
 		if (main->ring->servers_id[pos] != main->ring->servers_id[next_pos]) {
 			rebalancing(main->ring->servers[next_pos], pos,
 							main->ring->servers[pos], main->ring, main->servers);
-
 		}
 	}
 }
@@ -82,22 +81,22 @@ void loader_remove_server(load_balancer_t *main, int server_id)
 	for (int i = 0; i < 3; ++i) {
 		int id = i * THOUSANDS + server_id;
 		unsigned int hash_id = hash_function_servers(&id);
-		int pos = search_pos(main->ring->hash,main->servers, hash_id);
+		int pos = search_pos(main->ring->hash, main->servers, hash_id);
 
 		/* eliminam din hashring fiecare copie a serverului */
 		if (!i)
 			removed_server = main->ring->servers[pos];
 		remove_server_ring(main->ring, &main->servers, pos);
-
 	}
 
 	redistribution(main, removed_server);
 	/* stergem memoria alocata serverului */
 	free_server_memory(removed_server);
-
 }
 
-void loader_store(load_balancer_t *main, char *key, char *value, int *server_id) {
+void loader_store(load_balancer_t *main, char *key, char *value,
+				  int *server_id)
+{
 	unsigned int hash_id = hash_function_key(key);
 	/* localizam serverul in care trebuie stocat noul item */
 	int add_pos = search_closest(main->ring->hash, hash_id, main->servers);

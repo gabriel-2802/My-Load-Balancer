@@ -11,10 +11,9 @@ typedef struct {
 
 
 struct load_balancer {
-
-	//nr de servere
+	/* nr de servere */
 	int servers;
-	//capacitatea totala a load_balancere-ului
+	/* capacitatea totala a load_balancere-ului */
 	int max_servers;
 	ring_t *ring;
 };
@@ -58,7 +57,8 @@ void free_load_balancer(load_balancer_t *main);
  * should be stored and call the function to store the entry on the respective server.
  *
  */
-void loader_store(load_balancer_t *main, char *key, char *value, int *server_id);
+void loader_store(load_balancer_t *main, char *key, char *value,
+				   int *server_id);
 
 /**
  * load_retrieve() - Gets a value associated with the key.
@@ -105,4 +105,4 @@ void loader_add_server(load_balancer_t *main, int server_id);
  */
 void loader_remove_server(load_balancer_t *main, int server_id);
 
-#endif /* LOAD_BALANCER_H_ */
+#endif  // LOAD_BALANCER_H_

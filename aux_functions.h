@@ -1,5 +1,6 @@
 /* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
-#pragma once
+#ifndef AUX_FUNCTIONS_H_
+#define AUX_FUNCTIONS_H_
 #include "server.h"
 
 /* functia realoca un orice tip de vector: void * */
@@ -49,3 +50,5 @@ void redistribution(load_balancer_t *main, server_memory_t *removed);
 /* functia este apelata in cadrul eliberarii finale a memoriei si marcheaza
 un server a carui memorie a fost eliberata */
 void mark_removed_server(int *removed, int id, int *servers_id, int size);
+
+#endif  // AUX_FUNCTIONS_H_

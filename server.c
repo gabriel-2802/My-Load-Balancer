@@ -10,7 +10,8 @@ server_memory_t *init_server_memory(void)
 	server_memory_t *server = malloc(sizeof(server_memory_t));
 	DIE(!server, "malloc\n");
 
-	server->memory = ht_create(MAX_PROD, hash_function_key, compare_function_strings,
+	server->memory = ht_create(MAX_PROD, hash_function_key,
+								compare_function_strings,
 								key_val_free_function);
 
 	return server;
@@ -18,7 +19,8 @@ server_memory_t *init_server_memory(void)
 
 void server_store(server_memory_t *server, char *key, char *value)
 {
-	ht_put(server->memory, key, strlen((char *)key) + 1, value, strlen((char *)value) + 1);
+	ht_put(server->memory, key, strlen((char *)key) + 1, value,
+		   strlen((char *)value) + 1);
 }
 
 char *server_retrieve(server_memory_t *server, char *key) {
