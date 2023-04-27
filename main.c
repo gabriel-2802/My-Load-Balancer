@@ -1,14 +1,9 @@
-/* Copyright 2023 <> */
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include "load_balancer.h"
 #include "utils.h"
-
-// #define REQUEST_LENGTH 1024
-// #define KEY_LENGTH 128
-// #define VALUE_LENGTH 65536
 
 void get_key_value(char* key, char* value, char* request) {
 	int key_start = 0, value_start = 0;
@@ -97,8 +92,6 @@ void apply_requests(FILE* input_file) {
 }
 
 int main(int argc, char* argv[]) {
-	// clock_t s, e;
-	// s =clock();
 	FILE *input;
 
 	if (argc != 2) {
@@ -112,8 +105,6 @@ int main(int argc, char* argv[]) {
 	apply_requests(input);
 
 	fclose(input);
-	// e = clock();
-	// printf("time  = %lf\n", ((double)e -s)/ CLOCKS_PER_SEC);
 
 	return 0;
 }

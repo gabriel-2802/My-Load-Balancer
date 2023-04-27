@@ -1,4 +1,4 @@
-/* Copyright 2023 <> */
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #include <stdlib.h>
 #include <string.h>
 #include "server.h"

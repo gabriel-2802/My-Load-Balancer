@@ -1,50 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-void f(int *v)
+int s_b(int *v, int size, int target)
 {
-    free(v);
-    v = NULL;
+    int left = 0, right = size - 1;
+
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+
+        if (v[mid] == target)
+            return mid;
+        else if (v[mid] < target)
+            left = mid + 1;
+        else
+            right = mid - 1;
+    }
+
+    return left;
+}
+
+int s_c(int *v, int size, int target)
+{
+    for (int i = 0; i < size; ++i) {
+        if (target < v[i])
+            return i;
+        else if (target == v[i])
+            return i;
+
+    }
+    return size;
 }
 
 int main()
-{   
-    int **v = malloc(3 * sizeof(int *));
-    int *a = malloc(sizeof(int));
-    *a = 5;
-    v[0] = a;
-    v[1] = a;
-    v[2] = a;
+{
+    int v[100] = {1, 2, 5, 9, 20, 22};
+    int s[100] = {0, 5, 6, 8, 10, 21, 25};
 
-    for (int i = 0; i < 3; ++i)
-        printf("%d ", *(v[i]));
-    
-    printf("\n");
-    // free(a);
-    *a = NULL;
-    for (int i = 0; i < 3; ++i)
-        if (v[i])
-        printf("%d ", *(v[i]));
-    printf("\n");
+    for (int i = 0; i < 7; ++i) {
+        int pos1 = s_b(v, 6, s[i]);
+        int pos2 = s_c(v, 6, s[i]);
 
-    // int size = 0, cap = 1;
-    // int a = 5;
+        printf("correct = %d, binarry = %d\n", pos2, pos1);
+    }
 
-    // int qux[100] = {1, 6, 8, 20, 101};
-    // int ok = 0;
-    // int size = 4;
-    
-    // int v[100] = {2, 21, 19, 101};
-    
-    // for (int i = 0; i < 4; ++i)
-    //     printf("el here at pos %d\n", search(qux, 5, v[i]));
-
-    // for (int i = 0; i < size; ++i)
-    //     printf("%d ", qux[i]);
-    //     printf("\n");
-    // 
-   
-    
     return 0;
 }

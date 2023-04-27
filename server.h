@@ -1,4 +1,4 @@
-/* Copyright 2023 <> */
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #ifndef SERVER_H_
 #define SERVER_H_
 #include "hashtable.h"

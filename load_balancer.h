@@ -1,22 +1,22 @@
-/* Copyright 2023 <> */
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #ifndef LOAD_BALANCER_H_
 #define LOAD_BALANCER_H_
 
 #include "server.h"
 typedef struct {
-    unsigned int *hash;
-    server_memory_t **servers;
-    int *servers_id;
+	unsigned int *hash;
+	server_memory_t **servers;
+	int *servers_id;
 } ring_t;
 
 
 struct load_balancer {
-    
-    //nr de servere 
-    int servers;
-    //capacitatea totala a load_balancere-ului
-    int max_servers;
-    ring_t *ring;
+
+	//nr de servere
+	int servers;
+	//capacitatea totala a load_balancere-ului
+	int max_servers;
+	ring_t *ring;
 };
 
 typedef struct load_balancer load_balancer_t;
@@ -65,7 +65,7 @@ void loader_store(load_balancer_t *main, char *key, char *value, int *server_id)
  * @arg1: Load balancer which distributes the work.
  * @arg2: Key represented as a string.
  * @arg3: This function will RETURN the server ID
-          which stores the value via this parameter.
+		  which stores the value via this parameter.
  *
  * The load balancer will search for the server which should posess the
  * value associated to the key. The server will return NULL in case

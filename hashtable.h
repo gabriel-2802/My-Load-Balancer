@@ -1,3 +1,4 @@
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #pragma once
 #include "ll_lists.h"
 #include "utils.h"
@@ -35,15 +36,15 @@ unsigned int hash_function_string(void *a);
 void key_val_free_function(void *data);
 
 hashtable_t *ht_create(unsigned int hmax, unsigned int (*hash_function)(void *),
-		       int (*compare_function)(void *, void *),
-		       void (*key_val_free_function)(void *));
+			   int (*compare_function)(void *, void *),
+			   void (*key_val_free_function)(void *));
 
 int ht_has_key(hashtable_t *ht, void *key);
 
 void *ht_get(hashtable_t *ht, void *key);
 
 void ht_put(hashtable_t *ht, void *key, unsigned int key_size, void *value,
-	    unsigned int value_size);
+		unsigned int value_size);
 
 void ht_remove_entry(hashtable_t *ht, void *key);
 

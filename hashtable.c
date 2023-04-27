@@ -1,3 +1,4 @@
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #include <string.h>
 #include <stdlib.h>
 #include "ll_lists.h"
@@ -62,15 +63,15 @@ void key_val_free_function(void *data)
 }
 
 hashtable_t *ht_create(unsigned int hmax, unsigned int (*hash_function)(void *),
-		       int (*compare_function)(void *, void *),
-		       void (*key_val_free_function)(void *))
+			   int (*compare_function)(void *, void *),
+			   void (*key_val_free_function)(void *))
 {
 	if (!hash_function || !compare_function) {
 		return NULL;
 	}
 
 	hashtable_t *map = malloc(sizeof(hashtable_t));
-    DIE(!map, "malloc\n");
+	DIE(!map, "malloc\n");
 
 	map->size = 0;
 	map->hmax = hmax;
@@ -81,18 +82,13 @@ hashtable_t *ht_create(unsigned int hmax, unsigned int (*hash_function)(void *),
 	map->buckets = malloc(map->hmax * sizeof(ll_list_t *));
 	for (unsigned int i = 0; i < map->hmax; ++i) {
 		map->buckets[i] = ll_create(sizeof(info_t));
-        DIE(!map->buckets[i], "Malloc\n");
+		DIE(!map->buckets[i], "Malloc\n");
 
 	}
 
 	return map;
 }
 
-/*
- * Functie care intoarce:
- * 1, daca pentru cheia key a fost asociata anterior o valoare in hashtable
- * folosind functia put 0, altfel.
- */
 int ht_has_key(hashtable_t *ht, void *key)
 {
 	if (!ht || !key) {
@@ -134,7 +130,7 @@ void *ht_get(hashtable_t *ht, void *key)
 }
 
 void ht_put(hashtable_t *ht, void *key, unsigned int key_size, void *value,
-	    unsigned int value_size)
+		unsigned int value_size)
 {
 	if (!ht || !key || !value) {
 		return;
@@ -169,8 +165,8 @@ void ht_put(hashtable_t *ht, void *key, unsigned int key_size, void *value,
 	memcpy(data_info->value, value, value_size);
 
 	ll_add_nth_node(
-	    ht->buckets[hash_index], 0,
-	    data_info); // adaugam fiecare nod nou pe prima pozitie a listei
+		ht->buckets[hash_index], 0,
+		data_info); // adaugam fiecare nod nou pe prima pozitie a listei
 	ht->size++;
 
 	free(data_info);
@@ -196,10 +192,10 @@ void ht_remove_entry(hashtable_t *ht, void *key)
 					 // membrul data din nod
 
 			ll_node_t *deleted_node = ll_remove_nth_node(
-			    ht->buckets[hash_index],
-			    node_nr); // captam nodul care trebuie eliberat
+				ht->buckets[hash_index],
+				node_nr); // captam nodul care trebuie eliberat
 			free(
-			    deleted_node); // eliberam memoria la care pointeaza
+				deleted_node); // eliberam memoria la care pointeaza
 					   // nodul ce a fost exclus din lista
 
 			ht->size--;

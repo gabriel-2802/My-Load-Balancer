@@ -1,18 +1,19 @@
+/* copyright Carauleanu Valentin Gabriel 311Cab 2023 */
 #pragma once
 #include "ll_lists.h"
 #define MIN(x, y) ((x) < (y) ? (x) : (y))
 
 typedef struct ll_node_t
 {
-    void* data;
-    struct ll_node_t* next;
+	void* data;
+	struct ll_node_t* next;
 } ll_node_t;
 
 typedef struct ll_list_t
 {
-    ll_node_t* head;
-    unsigned int data_size;
-    unsigned int size;
+	ll_node_t* head;
+	unsigned int data_size;
+	unsigned int size;
 } ll_list_t;
 
 ll_list_t *ll_create(unsigned int data_size);

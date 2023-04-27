@@ -1,3 +1,4 @@
+#copyright Carauleanu Valentin Gabriel 311Cab 2023
 CC=gcc
 CFLAGS=-std=c99 -Wall -Wextra
 LOAD=load_balancer
