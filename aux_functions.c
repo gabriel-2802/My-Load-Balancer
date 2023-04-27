@@ -94,7 +94,7 @@ void rebalance_items(hashtable_t *src, int dest_idx, hashtable_t *dest, ring_t *
                 item = (info_t *)item_node->data;
                 ht_put(dest, item->key, strlen(item->key) + 1, item->value, strlen(item->value) + 1);
                 item_node = item_node->next;
-                ht_remove_entry(src, key);
+                //ht_remove_entry(src, key);
             } else {
                 item_node = item_node->next;
             }

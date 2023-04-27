@@ -65,7 +65,7 @@ void loader_add_server(load_balancer_t *main, int server_id)
                         hash_id, new_server, pos);
 
         int next_pos = ((pos + 1) == main->servers ? 0 : (pos + 1));
-        if (main->servers > 3 && main->ring->servers_id[pos] != main->ring->servers_id[next_pos]) {
+        if (main->ring->servers_id[pos] != main->ring->servers_id[next_pos]) {
             rebalancing(main->ring->servers[next_pos], pos,
                             main->ring->servers[pos], main->ring, main->servers);
         

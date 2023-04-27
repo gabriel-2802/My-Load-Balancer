@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INITIAL_CAPACITY 30
+#define INITIAL_CAPACITY 15
 #define COPIES 3
 #define THOUSANDS 100000
 
