@@ -1,7 +1,6 @@
-**Nume: Carauleanu Valentin Gabriel**
-**Grupă: 311CA**
+## Load Balancer - Carauleanu Valentin Gabriel 311CA
 
-## Load Balancer - tema 2
+A doua mea tema la SDA.
 
 ### Descriere:
 
